@@ -20,7 +20,7 @@ config({
 
 app.use(
   cors({
-    origin: ["https://auction-platform-frontend-ysqf.onrender.com"],
+    origin: ["https://auction-platform-fontend.onrender.com"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
