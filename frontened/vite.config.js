@@ -4,8 +4,8 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   server: {
-    host: "localhost", // Force dev server to bind to localhost only
-    port: 5173,
+    host: true, // ✅ Allow Vite to bind to 0.0.0.0 (required on Render)
+    port: process.env.PORT || 5173, // ✅ Use Render's assigned port
   },
   plugins: [react()],
   resolve: {
