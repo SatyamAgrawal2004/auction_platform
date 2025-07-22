@@ -8,23 +8,26 @@ const commissionSlice = createSlice({
     loading: false,
   },
   reducers: {
-    postCommissionProofRequest(state, action) {
+    postCommissionProofRequest(state) {
       state.loading = true;
     },
-    postCommissionProofSuccess(state, action) {
+    postCommissionProofSuccess(state) {
       state.loading = false;
     },
-    postCommissionProofFailed(state, action) {
+    postCommissionProofFailed(state) {
       state.loading = false;
     },
   },
 });
 
+// ✅ Updated backend URI here
+const BACKEND_BASE_URL = "https://auction-platform-7h5z.onrender.com";
+
 export const postCommissionProof = (data) => async (dispatch) => {
   dispatch(commissionSlice.actions.postCommissionProofRequest());
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/v1/commission/proof",
+      `${BACKEND_BASE_URL}/api/v1/commission/proof`,
       data,
       {
         withCredentials: true,
@@ -35,7 +38,7 @@ export const postCommissionProof = (data) => async (dispatch) => {
     toast.success(response.data.message);
   } catch (error) {
     dispatch(commissionSlice.actions.postCommissionProofFailed());
-    toast.error(error.response.data.message);
+    toast.error(error?.response?.data?.message || "Something went wrong");
   }
 };
 
