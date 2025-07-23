@@ -21,8 +21,8 @@ const bidSlice = createSlice({
   },
 });
 
-// ✅ Replace localhost with Render backend URL
-const BACKEND_BASE_URL = "https://auction-platform-7h5z.onrender.com";
+// ✅ Updated backend base URL
+const BACKEND_BASE_URL = "https://auction-platform-backend-ilqi.onrender.com";
 
 export const placeBid = (id, data) => async (dispatch) => {
   dispatch(bidSlice.actions.bidRequest());

@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-// 🟡 Update backend base URL here
-const BASE_URL = "https://auction-platform-7h5z.onrender.com";
+// 🟡 Updated backend base URL
+const BASE_URL = "https://auction-platform-backend-ilqi.onrender.com";
 
 const userSlice = createSlice({
   name: "user",

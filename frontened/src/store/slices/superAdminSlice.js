@@ -3,8 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { getAllAuctionItems } from "./auctionSlice";
 
-// Base API URL
-const BASE_URL = "https://auction-platform-7h5z.onrender.com/api/v1/superadmin";
+// ✅ Updated backend base URL
+const BASE_URL =
+  "https://auction-platform-backend-ilqi.onrender.com/api/v1/superadmin";
 
 const superAdminSlice = createSlice({
   name: "superAdmin",
@@ -102,7 +103,7 @@ const superAdminSlice = createSlice({
   },
 });
 
-// Thunks
+// 🔵 Thunks
 
 export const getMonthlyRevenue = () => async (dispatch) => {
   dispatch(superAdminSlice.actions.requestForMonthlyRevenue());
