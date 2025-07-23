@@ -21,7 +21,7 @@ const commissionSlice = createSlice({
 });
 
 // ✅ Updated backend URI here
-const BACKEND_BASE_URL = "https://auction-platform-backend-s2i5.onrender.com";
+const BACKEND_BASE_URL = "https://auction-platform-backend-hkp6.onrender.com";
 
 export const postCommissionProof = (data) => async (dispatch) => {
   dispatch(commissionSlice.actions.postCommissionProofRequest());

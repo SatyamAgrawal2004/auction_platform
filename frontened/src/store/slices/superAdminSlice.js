@@ -5,7 +5,7 @@ import { getAllAuctionItems } from "./auctionSlice";
 
 // ✅ Updated backend base URL
 const BASE_URL =
-  "https://auction-platform-backend-s2i5.onrender.com/api/v1/superadmin";
+  "https://auction-platform-backend-hkp6.onrender.com/api/v1/superadmin";
 
 const superAdminSlice = createSlice({
   name: "superAdmin",
