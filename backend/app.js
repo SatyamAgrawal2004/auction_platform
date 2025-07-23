@@ -14,15 +14,36 @@ import { endedAuctionCron } from "./automation/endedAuctionCron.js";
 import { verifyCommissionCron } from "./automation/verifyCommissionCron.js";
 
 const app = express();
+
 config({
   path: "./config/config.env",
 });
 
+// ✅ Dynamic origin handling
+const allowedOrigins = [
+  /\.onrender\.com$/,
+  /\.vercel\.app$/,
+  "http://localhost:3000",
+];
+
 app.use(
   cors({
-    origin: ["https://auction-platform-fontend.onrender.com"],
-    methods: ["POST", "GET", "PUT", "DELETE"],
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true); // Allow Postman or server-side requests
+
+      const isAllowed = allowedOrigins.some((pattern) => {
+        if (typeof pattern === "string") return pattern === origin;
+        return pattern.test(origin);
+      });
+
+      if (isAllowed) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
 
@@ -36,15 +57,21 @@ app.use(
   })
 );
 
+// 🔗 Routes
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/auctionitem", auctionItemRouter);
 app.use("/api/v1/bid", bidRouter);
 app.use("/api/v1/commission", commissionRouter);
 app.use("/api/v1/superadmin", superAdminRouter);
 
+// 🕒 Cron Jobs
 endedAuctionCron();
 verifyCommissionCron();
+
+// 📦 DB Connection
 connection();
+
+// ⚠️ Error Handler
 app.use(errorMiddleware);
 
 export default app;
