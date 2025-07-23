@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 // 🟡 Updated backend base URL
-const BASE_URL = "https://auction-platform-backend-ilqi.onrender.com";
+const BASE_URL = "https://auction-platform-backend-s2i5.onrender.com";
 
 const userSlice = createSlice({
   name: "user",

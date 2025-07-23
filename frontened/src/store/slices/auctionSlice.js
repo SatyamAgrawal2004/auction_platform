@@ -80,7 +80,7 @@ const auctionSlice = createSlice({
 });
 
 // ✅ Updated backend URL here
-const BACKEND_BASE_URL = "https://auction-platform-backend-ilqi.onrender.com";
+const BACKEND_BASE_URL = "https://auction-platform-backend-s2i5.onrender.com";
 
 export const getAllAuctionItems = () => async (dispatch) => {
   dispatch(auctionSlice.actions.getAllAuctionItemRequest());

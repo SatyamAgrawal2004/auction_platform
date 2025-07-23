@@ -22,7 +22,7 @@ const bidSlice = createSlice({
 });
 
 // ✅ Updated backend base URL
-const BACKEND_BASE_URL = "https://auction-platform-backend-ilqi.onrender.com";
+const BACKEND_BASE_URL = "https://auction-platform-backend-s2i5.onrender.com";
 
 export const placeBid = (id, data) => async (dispatch) => {
   dispatch(bidSlice.actions.bidRequest());
